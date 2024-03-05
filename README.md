@@ -32,7 +32,7 @@
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
 
-## 🧐 About <a name = "about"></a>
+## 🧐 Acerca de: <a name = "about"></a>
 
 El proyecto de IA utiliza OpenCV, venv y facial-recognition para identificar a las personas.
 
@@ -43,4 +43,6 @@ Estas instrucciones te ayudarán a obtener una copia del proyecto en funcionamie
 ### Prerequisites
 
 Cosas que necesitas instalar y cómo instalarlas.
+- pip install opencv-python face-recognition pillow
+- Instalar visual studio desarrollo de escritorio con c++
 
