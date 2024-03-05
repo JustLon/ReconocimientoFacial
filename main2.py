@@ -30,9 +30,6 @@ class FaceRecognitionApp:
         if not ret:
             return
 
-        # Capture frames at a lower resolution
-        frame = cv2.resize(frame, (320, 240))  # Adjust resolution as needed
-
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         frame = self.adjust_color_balance(frame)
 
@@ -57,9 +54,6 @@ class FaceRecognitionApp:
 
         if not self.stop_script:
             self.video_label.after(int(1000 / self.fps), self.show_frame)
-
-
-
 
     def adjust_color_balance(self, frame):
         # Adjust color balance if necessary
