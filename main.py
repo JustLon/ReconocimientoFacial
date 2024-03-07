@@ -30,7 +30,7 @@ class FaceRecognitionApp:
         # Se cargan las caras (La carpeta) para tener las referencias
         self.reference_encodings = self.load_reference_encodings("caras")
 
-        #Se carga el Json con los datos de los usuarios
+        # Se carga el Json con los datos de los usuarios
         self.user_data = self.load_user_data("datos/datos.json")
 
         self.fps = fps
@@ -50,14 +50,14 @@ class FaceRecognitionApp:
         self.file_path = None  # Variable para almacenar la ruta del archivo seleccionado
 
     def load_user_data(self, json_file):
-        #json para los datos del usuario
+        # json para los datos del usuario
         if exists(json_file):
             with open(json_file, "r") as file:
                 return json.load(file)
         else:
             return []
 
-    def load_reference_encodings(self, directory): #se cargan las referencias
+    def load_reference_encodings(self, directory): # se cargan las referencias
         reference_encodings = []
         onlyfiles = [f for f in listdir(directory) if isfile(join(directory, f))]
         for filename in onlyfiles:
@@ -138,7 +138,7 @@ class FaceRecognitionApp:
         upload_button = tk.Button(self.ventana_foto, text="Subir foto", command=self.upload_photo)
         upload_button.pack(pady=10)
 
-        self.ventana_foto.focus_force() #Mantener el foco de la ventana secundaria!
+        self.ventana_foto.focus_force() # Mantener el foco de la ventana secundaria!
 
     def upload_photo(self):
         # Con esta funcion operamos la accion del boton de subir la foto
@@ -195,7 +195,7 @@ class FaceRecognitionApp:
         age = self.age_entry.get()
 
         if not name or not age:
-            print('No se lleno el campo nombre o edad')#Advertencia de windows
+            print('No se lleno el campo nombre o edad') # Advertencia de windows
             messagebox.showwarning("Campos vacíos", "Por favor, completa todos los campos.")
             self.ventana_foto.focus_get()
             return
