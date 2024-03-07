@@ -66,4 +66,10 @@ Se necesitan las siguientes librerias si no se ejecuta por venv:
 **Ejecutar el main**
 ```py main.py``` 
 
+### Ejecutar con PowerShell
+
+**Es posible ejecutar el script en powershell**
+
+inicia el archivo init.ps1 en el directorio raiz del proyecto 
+
 
