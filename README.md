@@ -20,17 +20,13 @@
     <br> 
 </p>
 
-## 📝 Table of Contents
+## 📝 Tabla de Contenidos
 
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
+- [Acerca de](#about)
+- [Empezando](#getting_started)
+- [Prerequisitos](#deployment)
+- [Como Usar](#use)
+
 
 ## 🧐 Acerca de: <a name = "about"></a>
 
@@ -38,11 +34,36 @@ El proyecto de IA utiliza OpenCV, venv y facial-recognition para identificar a l
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-Estas instrucciones te ayudarán a obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas. Consulta [deployment](#deployment) para obtener notas sobre cómo implementar el proyecto en un sistema en vivo.
+Estas instrucciones te ayudarán a obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas. Consulta [Como Usar](#deployment) para obtener notas sobre cómo implementar el proyecto en un sistema en vivo.
 
-### Prerequisites
+## Prerequisitos
 
-Cosas que necesitas instalar y cómo instalarlas.
-- pip install opencv-python face-recognition pillow
-- Instalar visual studio desarrollo de escritorio con c++
+Se necesitan las siguientes librerias si no se ejecuta por venv:
+
+- click==8.1.7
+- cmake==3.28.3
+- colorama==0.4.6
+- distlib==0.3.8
+- dlib==19.24.2
+- face-recognition==1.3.0
+- face_recognition_models==0.3.0
+- filelock==3.13.1
+- numpy==1.26.4
+- opencv-contrib-python==4.9.0.80
+- opencv-python==4.9.0.80
+- pillow==10.2.0
+- platformdirs==4.2.0
+- virtualenv==20.25.1
+
+### Comando para instalar con requirements.txt
+```pip install -r requirements.txt``` 
+
+## Como Usar <a name = "use"></a>
+
+**Iniciar venv en consola**
+```venv\Scripts\activate``` 
+
+**Ejecutar el main**
+```py main.py``` 
+
 
