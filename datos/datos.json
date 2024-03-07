@@ -23,5 +23,15 @@
         "id": "3daf44d6-d859-4bce-b416-bb4611a0656b",
         "nombre": "Arevalo",
         "edad": "65"
+    },
+    {
+        "id": "229b9896-53bf-4350-af81-fb8a8ea04269",
+        "nombre": "Laura",
+        "edad": "18"
+    },
+    {
+        "id": "3c97ed50-2945-49a3-96e2-90d6d47a42b4",
+        "nombre": "Ultima",
+        "edad": "1"
     }
 ]
