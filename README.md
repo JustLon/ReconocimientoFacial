@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="caras/14659e76-0594-4bf3-85ee-b00f5d8481b9.jpg" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Reconocimiento Facial</h3>
