@@ -1,37 +1,32 @@
 [
     {
-        "id": "80965369-ab7b-4da2-a386-3bd31a89b0d6",
-        "nombre": "Luis",
-        "edad": "21"
+        "id": "cb9ba047-f823-4244-b0db-a045a0c794ef",
+        "nombre": "Erick",
+        "edad": "241",
+        "color": [
+            252,
+            69,
+            165
+        ]
     },
     {
-        "id": "a94dbbe0-7903-417b-a5f8-83eb6ca47d7c",
-        "nombre": "Luis",
-        "edad": "21"
-    },
-    {
-        "id": "62e7a0ef-543d-4510-a81c-f49a3a4d456f",
-        "nombre": "Samuel",
-        "edad": "777"
-    },
-    {
-        "id": "14659e76-0594-4bf3-85ee-b00f5d8481b9",
-        "nombre": "Jesus",
-        "edad": "1"
-    },
-    {
-        "id": "3daf44d6-d859-4bce-b416-bb4611a0656b",
+        "id": "03ef124c-57b0-4bc8-8f0b-830a7035c195",
         "nombre": "Arevalo",
-        "edad": "65"
+        "edad": "1",
+        "color": [
+            58,
+            239,
+            63
+        ]
     },
     {
-        "id": "229b9896-53bf-4350-af81-fb8a8ea04269",
-        "nombre": "Laura",
-        "edad": "18"
-    },
-    {
-        "id": "3c97ed50-2945-49a3-96e2-90d6d47a42b4",
-        "nombre": "Ultima",
-        "edad": "1"
+        "id": "6dbb44e1-a860-4cbf-9be5-1bf568371906",
+        "nombre": "Luis",
+        "edad": "1",
+        "color": [
+            0,
+            0,
+            0
+        ]
     }
 ]

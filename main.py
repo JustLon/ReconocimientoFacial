@@ -8,12 +8,13 @@ from os.path import isfile, join, exists
 import threading
 import tkinter.filedialog as fd
 from tkinter import messagebox
+from tkinter import colorchooser
 import json
 import uuid
 import shutil
 
 class FaceRecognitionApp:
-    def __init__(self, root, video_source=0, resolution=(320, 240), fps=15):
+    def __init__(self, root, video_source=1, resolution=(800, 600), fps=15):
         self.root = root
         self.root.title("Agente R")
 
@@ -84,7 +85,7 @@ class FaceRecognitionApp:
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             frame = self.adjust_color_balance(frame)
 
-            face_locations = face_recognition.face_locations(frame)
+            face_locations = face_recognition.face_locations(img=frame)
 
             if face_locations:
                 face_encodings = face_recognition.face_encodings(frame, face_locations)
@@ -103,8 +104,8 @@ class FaceRecognitionApp:
                             for user in self.user_data:
                                 if user["id"] == user_id:
                                     label = f"{user['nombre']}, {user['edad']}"
+                                    color = tuple(user['color'])  # Verde si se reconoce la cara
                                     break
-                            color = (0, 255, 0)  # Verde si se reconoce la cara
                             break  # Se reconoce entonces se sale del loop.
 
                     #Se ponen los datos en la pantalla, cuadro y datos.
@@ -151,7 +152,27 @@ class FaceRecognitionApp:
 
             # Se abre y se redimenciona la imagen
             image = Image.open(self.file_path)
-            image = image.resize((300, 300), Image.Resampling.LANCZOS)  # 300x300 para que quepa en la ventana
+
+            # Calculate aspect ratio
+            width, height = image.size
+            aspect_ratio = width / height
+
+            # Resize the image to fit within a 300x300 aspect ratio
+            if aspect_ratio > 1:  # Landscape image
+                new_width = min(width, 300)
+                new_height = int(new_width / aspect_ratio)
+            else:  # Portrait or square image
+                new_height = min(height, 300)
+                new_width = int(new_height * aspect_ratio)
+
+            image = image.resize((new_width, new_height), Image.LANCZOS)
+
+            # Create a blank white canvas of size 300x300
+            canvas = Image.new("RGB", (300, 300), "white")
+
+            # Paste the resized image onto the canvas
+            offset = ((300 - new_width) // 2, (300 - new_height) // 2)
+            canvas.paste(image, offset)
 
             # Se convierte a formato ImageTk.photoimage para que se pueda mostrar
             photo = ImageTk.PhotoImage(image)
@@ -163,6 +184,9 @@ class FaceRecognitionApp:
                 self.name_entry.destroy()
                 self.age_label.destroy()
                 self.age_entry.destroy()
+                self.color_label.destroy()
+                self.color_chooser.destroy()
+                self.submit_button.destroy()
 
             # Se cre el display para la imagen
             self.image_label = tk.Label(self.ventana_foto, image=photo)
@@ -180,8 +204,18 @@ class FaceRecognitionApp:
             self.age_entry = tk.Entry(self.ventana_foto)
             self.age_entry.pack()
 
-            submit_button = tk.Button(self.ventana_foto, text="Aceptar", command=self.submit_photo)
-            submit_button.pack()
+            self.color_label = tk.Label(self.ventana_foto, text="Color:")
+            self.color_label.pack()
+            
+            self.color_var = tk.StringVar(value="##00ff00")  # default color
+
+            self.color_chooser = tk.Button(self.ventana_foto, text="Seleccionar color", command=self.choose_color)
+            self.color_chooser.pack()
+
+
+
+            self.submit_button = tk.Button(self.ventana_foto, text="Aceptar", command=self.submit_photo)
+            self.submit_button.pack()
 
             self.ventana_foto.geometry("400x600") #Redimensionamos la ventana para que todo quepa
 
@@ -189,10 +223,20 @@ class FaceRecognitionApp:
         else:
             print("No file selected.")
 
+    def choose_color(self):
+        color = colorchooser.askcolor(title="Seleccionar color")
+        if color[1]:
+            self.color_var.set(color[1])
+
 
     def submit_photo(self):
         name = self.name_entry.get()
         age = self.age_entry.get()
+        color_hex = self.color_var.get()  # Get the hexadecimal color value
+    
+        # Convert hexadecimal color to RGB format
+        color_rgb = tuple(int(color_hex[i:i+2], 16) for i in (1, 3, 5))
+        
 
         if not name or not age:
             print('No se lleno el campo nombre o edad') # Advertencia de windows
@@ -217,7 +261,8 @@ class FaceRecognitionApp:
         user_data = {
             "id": user_id,
             "nombre": name,
-            "edad": age
+            "edad": age,
+            "color": color_rgb  # Adding color in RGB format
         }
 
         # Guardar los datos del usuario en el archivo json
@@ -251,7 +296,7 @@ class FaceRecognitionApp:
         rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
         # Detectar las ubicaciones de las caras en la imagen
-        face_locations = face_recognition.face_locations(rgb_image)
+        face_locations = face_recognition.face_locations(img=rgb_image)
 
         # Si se detecta al menos una cara
         if face_locations:
